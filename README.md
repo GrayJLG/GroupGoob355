@@ -1,5 +1,5 @@
 My groupmembers are:
-- XXXX
+- Jacob Gray
 - XXXX
 - XXXX
 - XXXX

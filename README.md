@@ -1,4 +1,4 @@
-My groupmembers are:
+My groupmembers are: <br />
  Austin Bickel <br />
  Jenna Essex <br />
  Jacob Gray <br />

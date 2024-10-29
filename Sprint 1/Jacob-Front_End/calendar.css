@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    background: #f5f6f7;
+  }
+h1 {
+    text-align: center;
+    padding: 32px;
+    background-color: #0a0a23;
+    color: #ffffff;
+    border-bottom: 4px solid #fdb347;
+    width: 100%;
+  }
+
+ .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 150px); 
+    grid-template-rows: repeat(5, 150px); 
+    max-width: 1050px; 
+    height: 900px; 
+    margin: 0 auto;
+    padding: 0 10px 20px 10px;
+    align-items: center;
+}
+
+ .box {
+    width: 147px;
+    height: 147px;
+    background-color: #FFFFFF;
+    border: 3px solid black;
+    display: flex; 
+    position: relative;
+}
+
+.number {
+    height: 0;
+    width: 0;
+    justify-content: left;
+    align-items: top; 
+    font-size: 15px;
+    margin: 0;
+}
+
+
+.label {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-grow: 1; 
+    text-align: center; 
+}
+

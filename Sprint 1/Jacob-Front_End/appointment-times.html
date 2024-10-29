@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+        <title>Appointment Times</title>
+        <link rel="stylesheet" href="appointment-styles.css">
+        <script>
+            function handleSubmit(event) {
+                event.preventDefault();
+                const url = "calendar.html";
+                window.location.href = url;
+            }
+    
+            function handleCancel(event) {
+                event.preventDefault();
+                const url = "calendar.html"; 
+                window.location.href = url;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Available Appointment Times</h1>
+        <form method="post"  onsubmit="handleSubmit(event)">
+        <fieldset>
+            <legend>Please pick an available appointment time</legend>
+            <div class = "available-box">
+                <div class = "available-text">yup</div>
+            </div>
+            <div class = "available-box">
+                <div class = "available-text">yup</div>
+            </div>
+            <div class = "available-box">
+                <div class = "available-text">yup</div>
+            </div>
+        </fieldset>
+        <button type="submit" onclick="handleSubmit(event)">Submit</button>
+        <button type="submit" onclick="handleCancel(event)">Cancel</button>
+        </form>
+    </body>
+</html>

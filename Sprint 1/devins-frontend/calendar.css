@@ -10,21 +10,17 @@ body {
     background: #f5f6f7;
 }
 
-h1 {
-    text-align: center;
+.header {
+    display: flex;
     padding: 32px 0;
     background-color: #0a0a23;
     color: #ffffff;
     border-bottom: 4px solid #fdb347;
-    width: 100%;
-    margin: 0 0 10px 0;
+    justify-content: center;
 }
 
 .container {
     position: relative;
-    width: 1200px;
-    min-width: 850px;
-    height: 1000px; 
     margin: 0 auto;
     padding: 0 10px 0 10px;
     align-items: center;
@@ -47,7 +43,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 500px;
+    padding: 0 250px;
     font-size: 1.2rem;
     font-weight: 500;
     text-transform: capitalize;
@@ -111,10 +107,11 @@ h1 {
     border-bottom: 1px solid black;
 }
 
-.calendar .days .prev-date,
-.calendar .days .next-date {
+.calendar .days .prev-date .day-number,
+.calendar .days .next-date .day-number {
     color: #b3b3b3;
 }
+
 .calendar .month .prev,
 .calendar .month .next {
     cursor: pointer;
@@ -131,9 +128,9 @@ h1 {
 .return {
     display: block;
     width: 60%;
-    margin: auto;
     height: 2em;
     font-size: 1.1rem;
+    margin: auto;
     background-color: #3b3b4f;
     border-color: white;
     color: white;
@@ -148,20 +145,27 @@ h1 {
 }
 
 
+.day-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
 
 /* Center content inside day-content without interference from day-number */
-.appt {
+.schedule-btn {
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 80%;
+    width: 90%;
     height: 60%;
     box-sizing: border-box;
     background-color: lightblue;
     border-radius: 10px;
+    border: none;
 }
-.appt:hover {
+.schedule-btn:hover {
     background-color: rgb(101, 101, 211);
     color: #fff;
     cursor: pointer;

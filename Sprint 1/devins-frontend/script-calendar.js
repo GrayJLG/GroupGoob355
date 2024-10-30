@@ -4,7 +4,7 @@ const calendar = document.querySelector(".calendar"),
     prev = document.querySelector(".prev"),
     next = document.querySelector(".next");
 
-let today = new Date();
+const today = new Date();
 let activeDay;
 let month = today.getMonth();
 let year = today.getFullYear();
@@ -39,26 +39,44 @@ function initCalendar() {
     let days = "";
 
     for (let x = day; x > 0; x--) {
-        days += `<div class="day prev-date"><span class="day-number">${prevDays - x + 1}</span></div>`;
+      days += `<div class="day prev-date"><span class="day-number">${prevDays - x + 1}</span></div>`;
     }
 
     for (let i = 1; i <= lastDate; i++) {
-        days += `<div class="day"><span class="day-number">${i}</span><div class="appt">Add</div></div>`;
+      const iterativeDate = new Date(year, month, i);
+      // true if sunday or saturday
+      const isWeekend = iterativeDate.getDay() === 0 || iterativeDate.getDay() === 6;
+      if (isWeekend || iterativeDate < today) {
+        days += `<div class="day">
+                  <span class="day-number">${i}</span>
+                </div>`;
+      }
+      else {
+        days += `<div class="day">
+                  <span class="day-number">${i}</span>
+                  <button class="schedule-btn" data-date="${iterativeDate.toISOString()}">Schedule Therapy Appointment</button>
+                  </div>`;
+      }
     }
 
     for (let j = 1; j <= nextDays; j++) {
-        days += `<div class="day next-date"><span class="day-number">${j}</span></div>`;
+      days += `<div class="day next-date"><span class="day-number">${j}</span></div>`;
     }
 
     daysContainer.innerHTML = days;
 
-    const appts = document.querySelectorAll(".appt");
-    // navigate to the appointment times page
-    appts.forEach(appt => {
-    appt.addEventListener("click", () => {
-        const url = "appointment-times.html"; // URL for the appointment times page
-        window.location.href = url; // Redirect to the appointment times page
-    });
+    // attach event listeners for each schedule appt button
+    const schedules = document.querySelectorAll(".schedule-btn");
+   
+    schedules.forEach(button => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation(); // prevents triggering any parent event listeners
+        const selectedDate = e.currentTarget.getAttribute("data-date");
+
+        // save selected date then redirect
+        localStorage.setItem("selectedDay", selectedDate);
+        window.location.href = "appointment-times.html";
+      });
     });
 }
 
@@ -95,3 +113,32 @@ handleReturn.addEventListener("click", () => {
   const url = "therapist-select.html"; // URL for the therapist selection page
   window.location.href = url; // Redirect to the therapist selection page
 })
+
+function displaySavedAppointment() {
+  const savedAppointment = JSON.parse(localStorage.getItem("selectedAppointment"));
+  if (!savedAppointment) return; // Exit if no appointment is saved
+
+  const { date, details } = savedAppointment;
+  const appointmentDate = new Date(date);
+
+  // Find the corresponding day element in the calendar
+  const dayElements = document.querySelectorAll(".day");
+  dayElements.forEach(dayElement => {
+      const dayNumber = parseInt(dayElement.querySelector(".day-number").innerText, 10);
+
+      // verify if saved date matches calendar day
+      if (dayNumber === appointmentDate.getDate() &&
+          month === appointmentDate.getMonth() &&
+          year === appointmentDate.getFullYear()) {
+
+          // Create a new div to show the appointment details
+          const scheduleBtn = document.querySelector(".schedule-btn");
+          scheduleBtn.innerText = details;
+          dayElement.appendChild(appointmentDiv);
+      }
+  });
+}
+
+// Call this function after initializing the calendar
+initCalendar();
+displaySavedAppointment();

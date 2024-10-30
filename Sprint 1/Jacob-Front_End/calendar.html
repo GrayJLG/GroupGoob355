@@ -5,153 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment Calendar</title> <!-- Title of the page -->
     <link rel="stylesheet" href="calendar.css"> <!-- Link to external CSS file for styling -->
-    
-    <script>
-        // Function to navigate to the appointment times page
-        function openLink(day) {
-            const url = "appointment-times.html"; // URL for the appointment times page
-            window.location.href = url; // Redirect to the appointment times page
-        }
-
-        // Function to navigate back to the therapist selection page
-        function handleReturn() {
-            const url = "therapist-select.html"; // URL for the therapist selection page
-            window.location.href = url; // Redirect to the therapist selection page
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h1>January</h1> <!-- Main heading for the calendar -->
-    <div class="calendar"> <!-- Container for the calendar -->
-        <!-- Each box represents a day of the month, with an onclick event to open the appointment page -->
-        <div class="box one" onclick="openLink(1)">
-            <div class="number">1</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box two" onclick="openLink(2)">
-            <div class="number">2</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box three" onclick="openLink(3)">
-            <div class="number">3</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box four" onclick="openLink(4)">
-            <div class="number">4</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box five" onclick="openLink(5)">
-            <div class="number">5</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box six" onclick="openLink(6)">
-            <div class="number">6</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box seven" onclick="openLink(7)">
-            <div class="number">7</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box eight" onclick="openLink(8)">
-            <div class="number">8</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box nine" onclick="openLink(9)">
-            <div class="number">9</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box ten" onclick="openLink(10)">
-            <div class="number">10</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box eleven" onclick="openLink(11)">
-            <div class="number">11</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twelve" onclick="openLink(12)">
-            <div class="number">12</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box thirteen" onclick="openLink(13)">
-            <div class="number">13</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box fourteen" onclick="openLink(14)">
-            <div class="number">14</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box fifteen" onclick="openLink(15)">
-            <div class="number">15</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box sixteen" onclick="openLink(16)">
-            <div class="number">16</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box seventeen" onclick="openLink(17)">
-            <div class="number">17</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box eighteen" onclick="openLink(18)">
-            <div class="number">18</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box nineteen" onclick="openLink(19)">
-            <div class="number">19</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty" onclick="openLink(20)">
-            <div class="number">20</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-one" onclick="openLink(21)">
-            <div class="number">21</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-two" onclick="openLink(22)">
-            <div class="number">22</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-three" onclick="openLink(23)">
-            <div class="number">23</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-four" onclick="openLink(24)">
-            <div class="number">24</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-five" onclick="openLink(25)">
-            <div class="number">25</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-six" onclick="openLink(26)">
-            <div class="number">26</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-seven" onclick="openLink(27)">
-            <div class="number">27</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-eight" onclick="openLink(28)">
-            <div class="number">28</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box twenty-nine" onclick="openLink(29)">
-            <div class="number">29</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box thirty" onclick="openLink(30)">
-            <div class="number">30</div>
-            <div class="label">yup</div>
-        </div>
-        <div class="box thirty-one" onclick="openLink(31)">
-            <div class="number">31</div>
-            <div class="label">yup</div>
+    <h1>Appointment Scheduler</h1> <!-- Main heading for the calendar -->
+    <div class="container"> <!-- Container for the calendar -->
+        <div class="left">
+            <div class="calendar">
+                <div class="month">
+                    <i class="fas fa-angle-left prev"></i>
+                    <div class="date">december 2015</div>
+                    <i class="fas fa-angle-right next"></i>
+                </div>
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days"></div>
+            </div>
         </div>
     </div>
     
     <!-- Button to return to the therapist selection page -->
-    <input type="submit" value="Return to Therapist Select" onclick="handleReturn()" />
+    <button class="return">Return to Therapist Selection</button>  
+    <script src="script-calendar.js"></script>  
 </body>
 </html>
 

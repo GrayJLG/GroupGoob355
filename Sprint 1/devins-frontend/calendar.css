@@ -79,18 +79,17 @@ h1 {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 20px;
+
 }
 
 .calendar .days .day {
     width: 14.28%;
     height: 150px;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Needed for absolute positioning of day-number */
     box-sizing: border-box;
-    padding: 5px;
-    position: relative;
 
     /* Apply borders selectively to avoid double borders */
     border-top: 1px solid black;
@@ -112,11 +111,6 @@ h1 {
     border-bottom: 1px solid black;
 }
 
-.calendar .days .day:not(.prev-date, .next-date):hover {
-    color: #fff;
-    background-color: var(--primary-clr);
-}
-
 .calendar .days .prev-date,
 .calendar .days .next-date {
     color: #b3b3b3;
@@ -125,34 +119,6 @@ h1 {
 .calendar .month .next {
     cursor: pointer;
 }
-
-.note {
-    font-size: 0.8rem;
-    color: #666;
-    text-align: center;
-    margin-top: 5px;
-}
-
-/* legacy css */
-/*
-.box {
-    width: 147px;
-    height: 147px;
-    background-color: #FFFFFF;
-    border: 3px solid black;
-    display: flex; 
-    position: relative;
-}
-
-.number {
-    height: 0;
-    width: 0;
-    justify-content: left;
-    align-items: top; 
-    font-size: 15px;
-    margin: 0;
-}
-*/
 
 .label {
     display: flex;
@@ -179,4 +145,24 @@ h1 {
 .return:hover {
     background-color: #fff;
     color: #3b3b4f;
+}
+
+
+
+/* Center content inside day-content without interference from day-number */
+.appt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+    box-sizing: border-box;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+.appt:hover {
+    background-color: rgb(101, 101, 211);
+    color: #fff;
+    cursor: pointer;
 }

@@ -1,50 +1,55 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
-        <title>Patient Info</title>
-        <link rel="stylesheet" href="therapist-styles.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Info</title>
+    <link rel="stylesheet" href="therapist-styles.css"> <!-- Link to external CSS file for styling -->
+    
     <script>
-        let selectedTherapist = null; // Variable to store selected therapist
+        let selectedTherapist = null; // Variable to store the selected therapist
 
+        // Function to handle form submission
         function handleSubmit(event) {
-            event.preventDefault();
-            if (!selectedTherapist) {
-                alert("Please select a therapist before submitting.");
+            event.preventDefault(); // Prevent default form submission behavior
+            if (!selectedTherapist) { // Check if no therapist is selected
+                alert("Please select a therapist before submitting."); // Alert user
                 return; // Prevent form submission if no selection
             }
-            const url = "calendar.html"; 
-            window.location.href = url; 
+            const url = "calendar.html"; // URL to redirect to after submission
+            window.location.href = url; // Redirect to the calendar page
         }
 
+        // Function to handle therapist selection
         function selectTherapist(box) {
-            // Remove 'selected' class from all boxes
+            // Remove 'selected' class from all therapist boxes
             const boxes = document.querySelectorAll('.available-box');
-            boxes.forEach(b => b.classList.remove('selected'));
+            boxes.forEach(b => b.classList.remove('selected')); // Clear previous selection
 
-            // Add 'selected' class to the clicked box
+            // Add 'selected' class to the clicked therapist box
             box.classList.add('selected');
-            selectedTherapist = box; // Store the selected therapist
+            selectedTherapist = box; // Store the currently selected therapist
         }
     </script>
-    </head>
+</head>
 <body>
-    <h1>Available Therapists</h1>
-    <form method="post"  onsubmit="handleSubmit(event)">
-    <fieldset>
-        <legend>Please pick an available appointment time</legend>
-        <div class = "available-box" onclick="selectTherapist(this)">
-            <div class = "available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
-        </div>
-        <div class = "available-box" onclick="selectTherapist(this)">
-            <div class = "available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
-        </div>
-        <div class = "available-box" onclick="selectTherapist(this)">
-            <div class = "available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
-        </div>
-    </fieldset>
-<input type="submit" value="Submit" />
-</form>
+    <h1>Available Therapists</h1> <!-- Main heading for the page -->
+    <form method="post" onsubmit="handleSubmit(event)"> <!-- Form to select a therapist -->
+        <fieldset> <!-- Grouping elements within a box -->
+            <legend>Please pick an available appointment time</legend> <!-- Legend for the fieldset -->
+            <!-- Each available therapist box -->
+            <div class="available-box" onclick="selectTherapist(this)">
+                <div class="available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+            </div>
+            <div class="available-box" onclick="selectTherapist(this)">
+                <div class="available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+            </div>
+            <div class="available-box" onclick="selectTherapist(this)">
+                <div class="available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+            </div>
+        </fieldset>
+        <input type="submit" value="Submit" /> <!-- Submit button for the form -->
+    </form>
 </body>
 </html>
+

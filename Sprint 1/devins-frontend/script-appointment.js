@@ -1,3 +1,4 @@
+// make sure code only runs after html is fully loaded and parsed
 document.addEventListener("DOMContentLoaded", () => {
   let selectedAppointment = null; // Variable to store the selected appointment
 

@@ -1,6 +1,6 @@
 I don't know how to do this out of github directly so first download all these files.
 Next, you will need to install the Live Server Extension in vscode: LiveServer by Ritwick Dey
-Once installed, right click on therapist-select.html IN THE FOLDER, NOT OPEN EDITORS.
+Once installed, right click on login.html IN THE FOLDER, NOT OPEN EDITORS.
 The top option should be "Open with Live Server"
 This will open the webpage in your browser. This is a live server so anything you change in the html or css will be updated live.
 Navigate through the pages using the buttons. Let me know if anything is broken or confusing.

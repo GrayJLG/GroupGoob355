@@ -6,10 +6,29 @@
         <title>Appointment Times</title>
         <link rel="stylesheet" href="appointment-styles.css">
         <script>
+            let selectedAppointment = null;
+            
             function handleSubmit(event) {
                 event.preventDefault();
-                const url = "calendar.html";
-                window.location.href = url;
+                if (!selectedAppointment) {
+                    alert("Please select an appointment before submitting.");
+                    return; 
+                }
+    
+                const appointmentDetails = selectedAppointment.querySelector('.available-text').innerText;
+                const confirmation = window.confirm(`You have selected:\n${appointmentDetails}\n\nIs this correct?`);
+    
+                if (confirmation) {
+                    const url = "calendar.html";
+                    window.location.href = url; 
+                }
+            }
+            
+            function selectAppointment(box) {
+                const boxes = document.querySelectorAll('.available-box');
+                boxes.forEach(b => b.classList.remove('selected'));
+                box.classList.add('selected');
+                selectedAppointment = box; 
             }
     
             function handleCancel(event) {
@@ -24,18 +43,18 @@
         <form method="post"  onsubmit="handleSubmit(event)">
         <fieldset>
             <legend>Please pick an available appointment time</legend>
-            <div class = "available-box">
-                <div class = "available-text">yup</div>
+            <div class = "available-box" onclick="selectAppointment(this)">
+                <div class = "available-text">Example 1</div>
             </div>
-            <div class = "available-box">
-                <div class = "available-text">yup</div>
+            <div class = "available-box" onclick="selectAppointment(this)">
+                <div class = "available-text">Example 2</div>
             </div>
-            <div class = "available-box">
-                <div class = "available-text">yup</div>
+            <div class = "available-box" onclick="selectAppointment(this)">
+                <div class = "available-text">Example 3</div>
             </div>
         </fieldset>
-        <button type="submit" onclick="handleSubmit(event)">Submit</button>
-        <button type="submit" onclick="handleCancel(event)">Cancel</button>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="handleCancel(event)">Cancel</button>
         </form>
     </body>
 </html>

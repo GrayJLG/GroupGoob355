@@ -1,14 +1,17 @@
 body {
-    margin: 0;
+    margin: auto;
     background: #f5f6f7;
+    
   }
+
 h1 {
     text-align: center;
-    padding: 32px;
+    padding: 32px 0;
     background-color: #0a0a23;
     color: #ffffff;
     border-bottom: 4px solid #fdb347;
     width: 100%;
+    margin: 0 0 10px 0;
   }
 
  .calendar {
@@ -16,9 +19,9 @@ h1 {
     grid-template-columns: repeat(7, 150px); 
     grid-template-rows: repeat(5, 150px); 
     max-width: 1050px; 
-    height: 900px; 
+    height: 765px; 
     margin: 0 auto;
-    padding: 0 10px 20px 10px;
+    padding: 0 10px 0 10px;
     align-items: center;
 }
 
@@ -49,3 +52,15 @@ h1 {
     text-align: center; 
 }
 
+input[type="submit"] {
+    display: block;
+    width: 60%;
+    margin: auto;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: white;
+    color: white;
+    min-width: 300px;
+    text-align: center;
+  }

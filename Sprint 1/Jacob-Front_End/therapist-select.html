@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+        <title>Patient Info</title>
+        <link rel="stylesheet" href="therapist-styles.css">
+    <script>
+        let selectedTherapist = null; // Variable to store selected therapist
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            if (!selectedTherapist) {
+                alert("Please select a therapist before submitting.");
+                return; // Prevent form submission if no selection
+            }
+            const url = "calendar.html"; 
+            window.location.href = url; 
+        }
+
+        function selectTherapist(box) {
+            // Remove 'selected' class from all boxes
+            const boxes = document.querySelectorAll('.available-box');
+            boxes.forEach(b => b.classList.remove('selected'));
+
+            // Add 'selected' class to the clicked box
+            box.classList.add('selected');
+            selectedTherapist = box; // Store the selected therapist
+        }
+    </script>
+    </head>
+<body>
+    <h1>Available Therapists</h1>
+    <form method="post"  onsubmit="handleSubmit(event)">
+    <fieldset>
+        <legend>Please pick an available appointment time</legend>
+        <div class = "available-box" onclick="selectTherapist(this)">
+            <div class = "available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+        </div>
+        <div class = "available-box" onclick="selectTherapist(this)">
+            <div class = "available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+        </div>
+        <div class = "available-box" onclick="selectTherapist(this)">
+            <div class = "available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+        </div>
+    </fieldset>
+<input type="submit" value="Submit" />
+</form>
+</body>
+</html>

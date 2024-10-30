@@ -6,9 +6,15 @@
         <title>Appointment Calendar</title>
         <link rel="stylesheet" href="calendar.css">
         <script>
+
             function openLink(day) {
-                const url = "appointment-times.html"; // Replace with your URL
-                window.location.href= url + "?day=" + day;
+                const url = "appointment-times.html"; 
+                window.location.href = url;
+            }
+    
+            function handleReturn() {
+                const url = "therapist-select.html"; 
+                window.location.href = url;
             }
         </script>
     </head>
@@ -17,7 +23,7 @@
         <div class = "calendar">
             <div class = "box one" onclick="openLink(1)">
               <div class = "number">1</div>
-              <div class = label>yup</div>
+              <div class = "label">yup</div>
             </div>
             <div class = "box two" onclick="openLink(2)">
                 <div class = "number">2</div>
@@ -140,5 +146,6 @@
                 <div class = "label">yup</div>
             </div>
         </div>
+            <input type="submit" value="Return to Therapist Select" onclick="handleReturn()" />
     </body>
 </html>

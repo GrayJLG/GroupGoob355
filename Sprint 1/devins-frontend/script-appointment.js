@@ -1,63 +1,69 @@
-// make sure code only runs after html is fully loaded and parsed
 document.addEventListener("DOMContentLoaded", () => {
-  let selectedAppointment = null; // Variable to store the selected appointment
+    let selectedAppointment = null;
 
-  // handle appt selection
-  const selectAppointment = (box) => {
-      // Remove 'selected' class from all appointment boxes
-      document.querySelectorAll('.available-box').forEach(b => b.classList.remove('selected'));
-    
-      // Add 'selected' class to the clicked appointment box
-      box.classList.add('selected');
-      selectedAppointment = box; // Store the currently selected appointment
-  };
+    // Function to generate a random time between 09:00 and 21:00 in 1-hour intervals
+    const generateRandomTime = () => {
+        const startHour = 9;
+        const endHour = 21;
 
-  // Attach click event listeners to each appointment box
-  document.querySelectorAll('.available-box').forEach(box => {
-      box.addEventListener('click', () => selectAppointment(box));
-  });
+        // Generate a random hour between startHour and endHour
+        const randomHour = Math.floor(Math.random() * (endHour - startHour)) + startHour;
 
-  // Button elements
-  const handleSubmit = document.querySelector(".submit");
-  const handleCancel = document.querySelector(".cancel");
+        // Format time as HH:00
+        return `${String(randomHour).padStart(2, '0')}:00`;
+    };
 
-  // Submit button event listener
-  handleSubmit.addEventListener("click", () => {
-      if (!selectedAppointment) { // Check if no appointment is selected
-          alert("Please select an appointment before submitting."); // Alert user
-          return; // Prevent further execution if no selection
-      }
-      
-      // Get the details of the selected appointment
-      const appointmentDetails = selectedAppointment.querySelector('.available-text').innerText;
-      const confirmation = window.confirm(`You have selected:\n${appointmentDetails}\n\nIs this correct?`);
+    // Assign a random time to each available box
+    document.querySelectorAll('.available-box').forEach(box => {
+        const randomTime = generateRandomTime();
+        const timeElement = box.querySelector('.available-text');
+        if (timeElement) {
+            timeElement.innerText = randomTime;
+        }
+    });
 
-      if (confirmation) { // If user confirms
-          // Save the selected date and appointment details in localStorage
-        localStorage.setItem("selectedAppointment", JSON.stringify({
-          date: localStorage.getItem("selectedDay"), // Date already stored from calendar selection
-          details: appointmentDetails
-      }));
+    // Handle appointment selection
+    const selectAppointment = (box) => {
+        document.querySelectorAll('.available-box').forEach(b => b.classList.remove('selected'));
+        box.classList.add('selected');
+        selectedAppointment = box; // Store the currently selected appointment
+    };
 
-      // Redirect to the calendar page
-      window.location.href = "calendar.html";
-      }
-  });
+    // Attach click event listeners to each appointment box
+    document.querySelectorAll('.available-box').forEach(box => {
+        box.addEventListener('click', () => selectAppointment(box));
+    });
 
-  // Cancel button event listener
-  handleCancel.addEventListener("click", () => {
-      window.location.href = "calendar.html"; // Redirect to the calendar page
-  });
+    // Submit button event listener
+    document.querySelector(".submit").addEventListener("click", () => {
+        if (!selectedAppointment) {
+            alert("Please select an appointment before submitting.");
+            return;
+        }
 
-  // Display selected date from localStorage if available
-  const selectedDate = localStorage.getItem("selectedDay");
-  if (selectedDate) {
-      const dateElement = document.querySelector(".selected-date");
-      const formattedDate = new Date(selectedDate).toLocaleDateString("en-US", {
-          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-      });
-      dateElement.innerText = `Selected Date: ${formattedDate}`;
-  }
+        // Get the selected date from localStorage and the appointment time
+        const selectedDate = localStorage.getItem("selectedDay");
+        const selectedTime = selectedAppointment.querySelector('.available-text').innerText;
 
-  
+        if (!selectedDate) {
+            alert("Please select a date on the calendar before choosing an appointment time.");
+            return;
+        }
+
+        const confirmation = window.confirm(`You have selected:\n${selectedDate} at ${selectedTime}\n\nIs this correct?`);
+        if (confirmation) {
+            // Save the selected date and time in localStorage
+            const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+            appointments.push({ date: selectedDate, time: selectedTime, details: "Therapy Appointment Scheduled" });
+            localStorage.setItem("appointments", JSON.stringify(appointments));
+
+            // Redirect to the calendar page
+            window.location.href = "calendar.html";
+        }
+    });
+
+    // Cancel button event listener
+    document.querySelector(".cancel").addEventListener("click", () => {
+        window.location.href = "calendar.html";
+    });
 });

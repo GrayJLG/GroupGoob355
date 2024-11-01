@@ -11,20 +11,20 @@
     <h1>Available Appointment Times</h1>
     <form> <!-- Removed onsubmit attribute -->
         <fieldset>
-            <legend>Please pick an available appointment time</legend>
+            <legend>Please pick an available appointment time for <span class="selected-date"></span></legend>
 
-            <div class="available-box" onclick="selectAppointment(this)">
-                <div class="available-text">Example 1</div>
+            <div class="available-box">
+                <div class="available-text"></div>
             </div>
-            <div class="available-box" onclick="selectAppointment(this)">
-                <div class="available-text">Example 2</div>
+            <div class="available-box">
+                <div class="available-text"></div>
             </div>
-            <div class="available-box" onclick="selectAppointment(this)">
-                <div class="available-text">Example 3</div>
+            <div class="available-box">
+                <div class="available-text"></div>
             </div>
 
             <!-- Moved selected-date element outside appointment boxes -->
-            <div class="selected-date"></div>
+            
         </fieldset>
         <button class="submit" type="button">Submit</button>
         <button class="cancel" type="button">Cancel</button>

@@ -5,35 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login_style.css">
-    <title>Login | Ludiflex</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="login-box">
         <div class="login-header">
             <header>Login</header>
         </div>
-        <div class="input-box">
-            <input type="email" class="input-field" placeholder="Email" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
-        </div>
-        <div class="forgot">
-            <section>
-                <input type="checkbox" id="check">
-                <label for="check">Remember me</label>
-            </section>
-            <section>
-                <a href="#">Forgot password</a>
-            </section>
-        </div>
-        <div class="input-submit">
-            <button onclick = "location.href = 'home.html'" class="submit-btn" id="submit"></button>
-            <label for="submit">Sign In</label>
-        </div>
+        <!-- Form starts here -->
+        <form id="loginForm" onsubmit="redirectToHome(event)">
+            <div class="input-box">
+                <input type="email" class="input-field" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
+            </div>
+            <div class="forgot">
+                <section>
+                    <input type="checkbox" id="check">
+                    <label for="check">Remember me</label>
+                </section>
+                <section>
+                    <a href="#">Forgot password</a>
+                </section>
+            </div>
+            <div class="input-submit">
+                <button type="submit" class="submit-btn" id="submit">Sign In</button>
+            </div>
+        </form>
+        <!-- Form ends here -->
         <div class="sign-up-link">
-            <p>Don't have account? <a href="#">Sign Up</a></p>
+            <p>Don't have an account? <a href="#">Sign Up</a></p>
         </div>
     </div>
+
+    <!-- JavaScript to handle redirection -->
+    <script>
+        function redirectToHome(event) {
+            event.preventDefault(); // Prevent form's default submit action
+            const form = document.getElementById('loginForm');
+            if (form.checkValidity()) { // Check if form is valid
+                window.location.href = 'home.html'; // Redirect to home.html
+            }
+        }
+    </script>
 </body>
 </html>

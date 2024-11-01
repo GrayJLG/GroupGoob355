@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login_style.css">
-    <title>Login | Ludiflex</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="login-box">
@@ -13,7 +13,7 @@
             <header>Login</header>
         </div>
         <!-- Form starts here -->
-        <form action="home.html" method="POST">
+        <form id="loginForm" onsubmit="redirectToHome(event)">
             <div class="input-box">
                 <input type="email" class="input-field" placeholder="Email" autocomplete="off" required>
             </div>
@@ -38,5 +38,16 @@
             <p>Don't have an account? <a href="#">Sign Up</a></p>
         </div>
     </div>
+
+    <!-- JavaScript to handle redirection -->
+    <script>
+        function redirectToHome(event) {
+            event.preventDefault(); // Prevent form's default submit action
+            const form = document.getElementById('loginForm');
+            if (form.checkValidity()) { // Check if form is valid
+                window.location.href = 'home.html'; // Redirect to home.html
+            }
+        }
+    </script>
 </body>
 </html>

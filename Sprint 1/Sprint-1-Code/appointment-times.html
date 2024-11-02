@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Times</title>
+    <link rel="stylesheet" href="appointment-styles.css">
+    <script src="script-appointment.js"></script> <!-- Use defer to ensure the script loads after the DOM -->
+</head>
+<body>
+    <h1>Available Appointment Times</h1>
+    <form> <!-- Removed onsubmit attribute -->
+        <fieldset>
+            <legend>Please pick an available appointment time</legend>
+
+            <div class="available-box" onclick="selectAppointment(this)">
+                <div class="available-text">Example 1</div>
+            </div>
+            <div class="available-box" onclick="selectAppointment(this)">
+                <div class="available-text">Example 2</div>
+            </div>
+            <div class="available-box" onclick="selectAppointment(this)">
+                <div class="available-text">Example 3</div>
+            </div>
+
+            <!-- Moved selected-date element outside appointment boxes -->
+            <div class="selected-date"></div>
+        </fieldset>
+        <button class="submit" type="button">Submit</button>
+        <button class="cancel" type="button">Cancel</button>
+    </form>
+</body>
+</html>

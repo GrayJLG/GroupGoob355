@@ -39,22 +39,9 @@ button {
     transition: background-color 0.3s;
 }
 
-button.select-therapist {
-    background-color: #4CAF50; /* Green background */
+button:hover {
+    background-color: #57576d;
 }
-
-button.select-therapist:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
-
-button.set-reminder {
-    background-color: #2196F3; /* Blue background */
-}
-
-button.set-reminder:hover {
-    background-color: #1976D2; /* Darker blue on hover */
-}
-
 
 /* Centered text message */
 p {

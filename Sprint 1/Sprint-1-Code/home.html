@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="home.css"> <!-- Optional link to a stylesheet for styling -->
 </head>
 <body>
-    <h1>Appointments</h1>
-    <p>Click the button below to make an appointment.</p>
+    <h1>Home</h1>
+    <p>Click the buttons below to choose where to go.</p>
     
     <!-- Button to redirect to therapist-select.html -->
    <p><button onclick="redirectToTherapistSelect()">Select Therapist</button></p>
-
+   <!--Button to redirect to the reminder.html--> 
+   <p><button onclick="redirectToReminder()">Set Reminder</button></p>
     <script>
         function redirectToTherapistSelect() {
             window.location.href = "therapist-select.html"; // Redirects to therapist-select.html
+        }
+        function redirectToReminder() {
+            window.location.href = "../../Sprint_2_Code/reminder.html";  //redirects to reminders.html
         }
     </script>
 </body>

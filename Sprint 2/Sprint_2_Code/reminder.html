@@ -23,9 +23,23 @@
     <!-- Feature area (e.g., message or element to be toggled) -->
     <div id="feature" style="display: none; margin-top: 20px;">
         <p>Reminders are turned on currently!</p>
+
+        <!--Reminder Date and Time Inputs -->
+        <label for="reminder-date">Reminder Date</label>
+        <input type="date" id="reminder-date">
+
+        <label for="reminder-time">Reminder Time</label>
+        <input type="time" id="reminder-time">
+
+        <button onclick="setReminder()">Set Reminder</button>
+
+        <p id="reminder-message" style="color: green; display: none;">Reminder is set!</p>
     </div>
 
     <script>
+
+        let reminderTime;
+
         // Function to toggle the feature based on the switch state
         function toggleFeature() {
             const toggleCheckbox = document.getElementById("check");
@@ -36,8 +50,54 @@
                 featureElement.style.display = "block";  // Show the feature
             } else {
                 featureElement.style.display = "none";   // Hide the feature
+                clearReminder();
             }
         }
+
+        // Function to set the reminder time based on user input
+        function setReminder() {
+            const dateInput = document.getElementById("reminder-date").value;
+            const timeInput = document.getElementById("reminder-time").value;
+
+            if (!dateInput || !timeInput) {
+                alert("Please select both a date and time for the reminder.");
+                return;
+            }
+
+            // Create a Date object for the reminder time
+            reminderTime = new Date(`${dateInput}T${timeInput}`);
+            document.getElementById("reminder-message").style.display = "block";
+            document.getElementById("reminder-message").textContent = "Reminder is set for " + reminderTime.toLocaleString();
+
+            // Start checking the reminder time
+            checkReminder();
+        }
+
+        // Function to check if the reminder time has been reached
+        function checkReminder() {
+            const intervalId = setInterval(() => {
+                const currentTime = new Date();
+
+                // If reminder time is set and reached, trigger the alert
+                if (reminderTime && currentTime >= reminderTime) {
+                    clearInterval(intervalId); // Stop checking once the reminder is triggered
+                    alert("It's time for your reminder!");
+                    document.getElementById("reminder-message").style.display = "none"; // Hide the set reminder message
+                }
+
+                // Stop the interval if the toggle is turned off
+                if (!document.getElementById("check").checked) {
+                    clearInterval(intervalId);
+                }
+            }, 1000); // Check every second
+        }
+
+        // Function to clear the reminder
+        function clearReminder() {
+            reminderTime = null; // Reset reminder time
+            document.getElementById("reminder-message").style.display = "none"; // Hide the message
+        }
+
 
         // Add an event listener to check for changes to the toggle
         document.getElementById("check").addEventListener("change", toggleFeature);

@@ -3,12 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Reminder</title>
     <link rel="stylesheet" href="reminder.css"> <!-- Optional link to a stylesheet for styling -->
 </head>
 <body>
     <h1>Reminder</h1>
-    <p>Click the button below to set reminders.</p>
+    <p>Settings for reminders</p>
+
+    <!-- Container for the label above the toggle switch -->
+    <div class="toggle-container">
+        <div class="toggle-status">
+            <span class="on-label">Off /</span>
+            <span class="off-label">On</span>
+        </div>
+        <input type="checkbox" id="check" class="toggle-checkbox">
+        <label for="check" class="toggle-button"></label>
+    </div>
+
+    <!-- Feature area (e.g., message or element to be toggled) -->
+    <div id="feature" style="display: none; margin-top: 20px;">
+        <p>Reminders are turned on currently!</p>
+    </div>
+
+    <script>
+        // Function to toggle the feature based on the switch state
+        function toggleFeature() {
+            const toggleCheckbox = document.getElementById("check");
+            const featureElement = document.getElementById("feature");
+
+            // Check if the toggle is on or off
+            if (toggleCheckbox.checked) {
+                featureElement.style.display = "block";  // Show the feature
+            } else {
+                featureElement.style.display = "none";   // Hide the feature
+            }
+        }
+
+        // Add an event listener to check for changes to the toggle
+        document.getElementById("check").addEventListener("change", toggleFeature);
+    </script>
+
     
     
    

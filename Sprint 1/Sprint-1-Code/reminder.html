@@ -10,6 +10,16 @@
     <h1>Reminder</h1>
     <p>Settings for reminders</p>
 
+    
+    <!-- Hidden modal for reminder notification might need to remove --> 
+    <div id="reminder-modal" class="modal">
+        <div class="modal-content">
+            <p>It's time for your day rating! Please follow the link below:</p>
+            <a href="rate_Day.html" class="rate-link">Rate Your Day</a>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
     <!-- Container for the label above the toggle switch -->
     <div class="toggle-container">
         <div class="toggle-status">
@@ -35,6 +45,9 @@
 
         <p id="reminder-message" style="color: green; display: none;">Reminder is set!</p>
     </div>
+
+     <!-- Go Back Button at the Bottom -->
+     <button onclick="history.back()" style="margin-top: 20px;">Go Back</button>
 
     <script>
 
@@ -73,30 +86,34 @@
             checkReminder();
         }
 
-        // Function to check if the reminder time has been reached
-        function checkReminder() {
-            const intervalId = setInterval(() => {
-                const currentTime = new Date();
+       // Function to check if the reminder time has been reached
+function checkReminder() {
+    const intervalId = setInterval(() => {
+        const currentTime = new Date();
 
-                // If reminder time is set and reached, trigger the alert
-                if (reminderTime && currentTime >= reminderTime) {
-                    clearInterval(intervalId); // Stop checking once the reminder is triggered
-                    alert("It's time for your reminder!");
-                    document.getElementById("reminder-message").style.display = "none"; // Hide the set reminder message
-                }
-
-                // Stop the interval if the toggle is turned off
-                if (!document.getElementById("check").checked) {
-                    clearInterval(intervalId);
-                }
-            }, 1000); // Check every second
+        // If reminder time is set and reached, trigger the modal notification
+        if (reminderTime && currentTime >= reminderTime) {
+            clearInterval(intervalId); // Stop checking once the reminder is triggered
+            showModal(); // Show the custom modal instead of an alert
+            document.getElementById("reminder-message").style.display = "none"; // Hide the set reminder message
         }
 
-        // Function to clear the reminder
-        function clearReminder() {
-            reminderTime = null; // Reset reminder time
-            document.getElementById("reminder-message").style.display = "none"; // Hide the message
+        // Stop the interval if the toggle is turned off
+        if (!document.getElementById("check").checked) {
+            clearInterval(intervalId);
         }
+    }, 1000); // Check every second
+}
+
+// Function to show the modal
+function showModal() {
+    document.getElementById("reminder-modal").style.display = "flex";
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById("reminder-modal").style.display = "none";
+}
 
 
         // Add an event listener to check for changes to the toggle

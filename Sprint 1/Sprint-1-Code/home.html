@@ -12,15 +12,23 @@
     
     <!-- Button to redirect to therapist-select.html -->
    <p><button onclick="redirectToTherapistSelect()">Select Therapist</button></p>
-   <!--Button to redirect to the reminder.html--> 
+    <!--Button to redirect to the rate_Day.html -->
+   <p><button onclick="redirectToRateDay()">Rate your Day</button></p>
+    <!--Button to redirect to the reminder.html --> 
    <p><button onclick="redirectToReminder()">Reminder Settings</button></p>
+    
+
+
     <script>
         function redirectToTherapistSelect() {
             window.location.href = "therapist-select.html"; // Redirects to therapist-select.html
         }
         //this needs to be fixed so it redirects to reminder page settings
         function redirectToReminder() {
-            window.location.href = "../../Sprint_2_Code/reminder.html";  //redirects to reminders.html
+            window.location.href = "reminder.html";  //redirects to reminders.html
+        }
+        function redirectToRateDay() {
+            window.location.href = "rate_Day.html";  //redirects to rate_Day.html
         }
     </script>
 </body>

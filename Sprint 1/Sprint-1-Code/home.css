@@ -55,6 +55,14 @@ button.set-reminder:hover {
     background-color: #1976D2; /* Darker blue on hover */
 }
 
+button.day_Rate {
+    background-color: #4CAF50; /* Green background */
+}
+
+button.day_Rate:hover {
+    background-color: #2196F3; /* Blue background */
+}
+
 
 /* Centered text message */
 p {

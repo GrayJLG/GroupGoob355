@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder</title>
+    <link rel="stylesheet" href="reminder.css"> <!-- Optional link to a stylesheet for styling -->
+</head>
+<body>
+    <h1>Reminder</h1>
+    <p>Settings for reminders</p>
+
+    
+    <!-- Hidden modal for reminder notification might need to remove --> 
+    <div id="reminder-modal" class="modal">
+        <div class="modal-content">
+            <p>It's time for your day rating! Please follow the link below:</p>
+            <a href="rate_Day.html" class="rate-link">Rate Your Day</a>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Container for the label above the toggle switch -->
+    <div class="toggle-container">
+        <div class="toggle-status">
+            <span class="on-label">Off /</span>
+            <span class="off-label">On</span>
+        </div>
+        <input type="checkbox" id="check" class="toggle-checkbox">
+        <label for="check" class="toggle-button"></label>
+    </div>
+
+    <!-- Feature area (e.g., message or element to be toggled) -->
+    <div id="feature" style="display: none; margin-top: 20px;">
+        <p>Reminders are turned on currently!</p>
+
+        <!--Reminder Date and Time Inputs -->
+        <label for="reminder-date">Reminder Date</label>
+        <input type="date" id="reminder-date">
+
+        <label for="reminder-time">Reminder Time</label>
+        <input type="time" id="reminder-time">
+
+        <button onclick="setReminder()">Set Reminder</button>
+
+        <p id="reminder-message" style="color: green; display: none;">Reminder is set!</p>
+    </div>
+
+     <!-- Go Back Button at the Bottom -->
+     <button onclick="history.back()" style="margin-top: 20px;">Go Back</button>
+
+    <script>
+
+        let reminderTime;
+
+        // Function to toggle the feature based on the switch state
+        function toggleFeature() {
+            const toggleCheckbox = document.getElementById("check");
+            const featureElement = document.getElementById("feature");
+
+            // Check if the toggle is on or off
+            if (toggleCheckbox.checked) {
+                featureElement.style.display = "block";  // Show the feature
+            } else {
+                featureElement.style.display = "none";   // Hide the feature
+                clearReminder();
+            }
+        }
+
+        // Function to set the reminder time based on user input
+        function setReminder() {
+            const dateInput = document.getElementById("reminder-date").value;
+            const timeInput = document.getElementById("reminder-time").value;
+
+            if (!dateInput || !timeInput) {
+                alert("Please select both a date and time for the reminder.");
+                return;
+            }
+
+            // Create a Date object for the reminder time
+            reminderTime = new Date(`${dateInput}T${timeInput}`);
+            document.getElementById("reminder-message").style.display = "block";
+            document.getElementById("reminder-message").textContent = "Reminder is set for " + reminderTime.toLocaleString();
+
+            // Start checking the reminder time
+            checkReminder();
+        }
+
+       // Function to check if the reminder time has been reached
+function checkReminder() {
+    const intervalId = setInterval(() => {
+        const currentTime = new Date();
+
+        // If reminder time is set and reached, trigger the modal notification
+        if (reminderTime && currentTime >= reminderTime) {
+            clearInterval(intervalId); // Stop checking once the reminder is triggered
+            showModal(); // Show the custom modal instead of an alert
+            document.getElementById("reminder-message").style.display = "none"; // Hide the set reminder message
+        }
+
+        // Stop the interval if the toggle is turned off
+        if (!document.getElementById("check").checked) {
+            clearInterval(intervalId);
+        }
+    }, 1000); // Check every second
+}
+
+// Function to show the modal
+function showModal() {
+    document.getElementById("reminder-modal").style.display = "flex";
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById("reminder-modal").style.display = "none";
+}
+
+
+        // Add an event listener to check for changes to the toggle
+        document.getElementById("check").addEventListener("change", toggleFeature);
+    </script>
+
+    
+    
+   
+</body>
+</html>

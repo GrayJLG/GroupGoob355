@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Therapist</title>
+    <link rel="stylesheet" href="therapist-styles.css"> <!-- Link to external CSS file for styling -->
+    
+    <script>
+        let selectedTherapist = null; // Variable to store the selected therapist
+
+        // Function to handle form submission
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            if (!selectedTherapist) { // Check if no therapist is selected
+                alert("Please select a therapist before submitting."); // Alert user
+                return; // Prevent form submission if no selection
+            }
+            const url = "calendar.html"; // URL to redirect to after submission
+            window.location.href = url; // Redirect to the calendar page
+        }
+
+        function handleBack(event) {
+            const url = "home.html"; // URL to redirect to after submission
+            window.location.href = url; // Redirect to the calendar page
+        }
+
+        // Function to handle therapist selection
+        function selectTherapist(box) {
+            // Remove 'selected' class from all therapist boxes
+            const boxes = document.querySelectorAll('.available-box');
+            boxes.forEach(b => b.classList.remove('selected')); // Clear previous selection
+
+            // Add 'selected' class to the clicked therapist box
+            box.classList.add('selected');
+            selectedTherapist = box; // Store the currently selected therapist
+        }
+    </script>
+</head>
+<body>
+    <h1>Available Therapists</h1> <!-- Main heading for the page -->
+    <form method="post" onsubmit="handleSubmit(event)"> <!-- Form to select a therapist -->
+        <fieldset> <!-- Grouping elements within a box -->
+            <legend>Please pick an available appointment time</legend> <!-- Legend for the fieldset -->
+            <!-- Each available therapist box -->
+            <div class="available-box" onclick="selectTherapist(this)">
+                <div class="available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+            </div>
+            <div class="available-box" onclick="selectTherapist(this)">
+                <div class="available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+            </div>
+            <div class="available-box" onclick="selectTherapist(this)">
+                <div class="available-text">Therapist Name</br>Specialty</br>General Time Slots</br></div>
+            </div>
+        </fieldset>
+        <p><button type = "submit" onclick="handleSubmit()">Submit</button></p> <!-- Return to home page -->
+        <p><button type = "button" onclick="handleBack()">Back</button></p> <!-- Return to home page -->
+    </form>
+</body>
+</html>
+

@@ -74,3 +74,18 @@ h1 {
 .go-back-button:hover {
     background-color: #45a049;
 }
+
+.submit-button{
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}

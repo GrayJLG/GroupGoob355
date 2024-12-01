@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css"> <!-- Optional link to a stylesheet for styling -->
+</head>
+<body>
+    <h1>Home</h1>
+    <p>Click the buttons below to choose where to go.</p>
+    
+    <!-- Button to redirect to therapist-select.html -->
+   <p><button onclick="redirectToTherapistSelect()">Select Therapist</button></p>
+    <!--Button to redirect to the rate_Day.html -->
+   <p><button onclick="redirectToRateDay()">Rate your Day</button></p>
+    <!--Button to redirect to the reminder.html --> 
+   <p><button onclick="redirectToReminder()">Reminder Settings</button></p>
+    <!-- Button to redirect to bank account settings -->
+   <p><button onclick="redirectToBankAccountSettings()">Bank Account Settings</button></p>
+    
+
+
+    <script>
+        function redirectToTherapistSelect() {
+            window.location.href = "therapist-select.html"; // Redirects to therapist-select.html
+        }
+        //this needs to be fixed so it redirects to reminder page settings
+        function redirectToReminder() {
+            window.location.href = "reminder.html";  //redirects to reminders.html
+        }
+        function redirectToRateDay() {
+            window.location.href = "rate_Day.html";  //redirects to rate_Day.html
+        }
+        function redirectToBankAccountSettings () {
+            window.location.href = "bank-account.html"; //Redirects to bank-account.html
+        }
+    </script>
+</body>
+</html>

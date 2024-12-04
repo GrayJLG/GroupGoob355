@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account Settings</title>
+    <link rel="stylesheet" href="bank-account.css"> <!-- Optional link to a stylesheet for styling -->
+</head>
+<body>
+    <h1>Bank Account Settings</h1>
+
+    <p>Click the buttons below to Create or Edit a Bank Account.</p>
+
+     <!-- Button to redirect to therapist-select.html -->
+   <p><button onclick="redirectToNewBankAccount()">New Bank Account</button></p>
+     <!-- Button to redirect to therapist-select.html -->
+   <p><button onclick="redirectToEditBankAccount()">Edit Bank Account</button></p>
+     <!-- Button to redirect to therapist-select.html -->
+   <p><button onclick="redirectToHomePage()">Go Back</button></p>
+
+   <script>
+        function redirectToNewBankAccount() {
+            window.location.href = "new-bank-account.html"; //redirects to new-bank-account.html
+        }
+        function redirectToEditBankAccount() {
+            window.location.href = "edit-bank-acc.html";  //redirects to placeholder.html
+        }
+        function redirectToHomePage() {
+            window.location.href = "home.html";  //redirects to home.html
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Your Day</title>
+    <link rel="stylesheet" href="rate_Day.css">
+</head>
+<body>
+    <h1>Rate your Day</h1>
+    
+    <div class="rating">
+        <input type="radio" id="num10" name="dayRating" value="10">
+        <label for="num10" title="10">10</label>
+
+        <input type="radio" id="num9" name="dayRating" value="9">
+        <label for="num9" title="9">9</label>
+
+        <input type="radio" id="num8" name="dayRating" value="8">
+        <label for="num8" title="8">8</label>
+
+        <input type="radio" id="num7" name="dayRating" value="7">
+        <label for="num7" title="7">7</label>
+
+        <input type="radio" id="num6" name="dayRating" value="6">
+        <label for="num6" title="6">6</label>
+
+        <input type="radio" id="num5" name="dayRating" value="5">
+        <label for="num5" title="5">5</label>
+        
+        <input type="radio" id="num4" name="dayRating" value="4">
+        <label for="num4" title="4">4</label>
+
+        <input type="radio" id="num3" name="dayRating" value="3">
+        <label for="num3" title="3">3</label>
+
+        <input type="radio" id="num2" name="dayRating" value="2">
+        <label for="num2" title="2">2</label>
+
+        <input type="radio" id="num1" name="dayRating" value="1">
+        <label for="num1" title="1">1</label>
+    </div>
+
+    <!-- Submit Button -->
+    <button class = "submit-button" onclick="saveRating()">Submit Rating</button>
+
+    <!-- Display Rating -->
+    <p id="rating-display" style="margin-top: 20px; display: none;"></p>
+
+    <!-- Go Back Button -->
+    <a href="home.html" class="go-back-button">Go Back</a>
+
+    <script src="rate_Day.js"></script>
+</body>
+</html>
